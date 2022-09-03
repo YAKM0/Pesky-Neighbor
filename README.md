@@ -1,4 +1,4 @@
-# Pesky-Neighbor
+# Pesky-Neighbor V2
 Simple automatic deauth tool for educational purposes.
 
 MUST HAVE SUDO PRIV
