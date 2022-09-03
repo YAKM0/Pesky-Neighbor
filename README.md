@@ -17,7 +17,7 @@ once confirmed, it will put that interface into monitor mode
 
 after monitor mode is enabled, the script will auto deauth selected network
 
-when you are finished deauthing the network simply CTRL+C and PN will put the interface back into managed mode
+when you are finished deauthing the network simply CTRL+C and it will put the interface back into managed mode
 
 git clone https://github.com/YAKM0/Pesky-Neighbor.git
 
