@@ -24,3 +24,6 @@ cd Pesky-Neighbor/
 Chmod +x deauth.sh
 
 ./deauth.sh
+
+
+Email: YAKM0@pm.me
