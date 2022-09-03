@@ -54,3 +54,4 @@ clear
 echo "Returning to managed mode"
 sleep 2
 sudo airmon-ng stop $interface$mon > /dev/null 2>&1
+rm -rf input*
