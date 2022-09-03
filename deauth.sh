@@ -12,7 +12,9 @@ Twitter: @Y4KM0           | hack all the things. -dualcore
 mon='mon'
 sleep 5
 clear
+echo "========================================================================"
 nmcli dev wifi | awk '$2 != "--"' |awk '{print NR,$1,$2,$4}'
+echo "========================================================================"
 sleep 1
 echo "
 Copy targets BSSID and paste below WITH NO EXTRA SPACING
