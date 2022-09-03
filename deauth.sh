@@ -5,7 +5,8 @@ echo "
 Script: Pesky-Neighbor    | this is only for educational
 Description: Deauth tool  | purposes. YAKM0 is not 
 Author: YAKM0             | responsible for damages.
-Email: YAKM0@pm.me        | Happy hacking.
+Email: YAKM0@pm.me        | Drink all the beer, 
+Twitter: @Y4KM0           | hack all the things. -dualcore
 =============================================================
 "
 
