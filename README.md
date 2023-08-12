@@ -6,7 +6,7 @@ The Pesky-Neighbor Deauthentication Tool is a Bash script designed for education
 
 ## Disclaimer
 
-This script is intended for educational and learning purposes only. Unauthorized use of this script for malicious activities is illegal and unethical. The author and OpenAI do not condone or support any illegal or malicious actions.
+This script is intended for educational and learning purposes only. Unauthorized use of this script for malicious activities is illegal and unethical. The author does not condone or support any illegal or malicious actions.
 
 ## Usage
 
